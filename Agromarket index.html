@@ -218,10 +218,101 @@
     .cart-total-label { font-size: 12px; font-weight: 700; }
     .cart-total-value { color: var(--green-dark); font-size: 17px; font-weight: 800; }
     .cart-shipping-note { margin: 7px 0 0; color: var(--muted); font-size: 9px; line-height: 1.5; }
-    .cart-continue { width: 100%; min-height: 40px; margin-top: 16px; border: 0; border-radius: 6px; background: var(--green); color: #fff; cursor: pointer; font-size: 10px; font-weight: 700; }
-    .cart-continue:hover { background: var(--green-dark); }
+    .cart-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 16px; }
+    .cart-continue, .cart-pay { min-height: 43px; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 700; }
+    .cart-continue { border: 1px solid #dfe4da; background: #fff; color: var(--green); }
+    .cart-continue:hover { background: #f3f6ed; }
+    .cart-pay { border: 0; background: var(--green); color: #fff; }
+    .cart-pay:hover { background: var(--green-dark); }
+    .cart-pay:disabled { cursor: not-allowed; background: #adb6aa; }
     .toast { position: fixed; z-index: 10; right: 24px; bottom: 24px; padding: 12px 16px; transform: translateY(10px); border-radius: 7px; background: var(--green-dark); box-shadow: 0 8px 24px rgba(0,0,0,.15); color: #fff; font-size: 11px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
     .toast.show { transform: translateY(0); opacity: 1; }
+
+    .login-role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 4px 0 18px; }
+    .login-role { min-height: 112px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 7px; padding: 14px; border: 1px solid #dfe4da; border-radius: 9px; background: #fff; cursor: pointer; text-align: left; transition: .18s ease; }
+    .login-role:hover, .login-role.active { border-color: #91a98c; background: #f3f6ed; transform: translateY(-2px); }
+    .login-role-icon { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: #edf2e8; color: var(--green); font-size: 18px; }
+    .login-role strong { font-size: 11px; }
+    .login-role small { color: var(--muted); font-size: 9px; line-height: 1.4; }
+
+    .product-dialog { width: min(760px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 0; overflow: auto; border: 0; border-radius: 14px; background: #fff; box-shadow: 0 24px 80px rgba(0,0,0,.22); }
+    .product-dialog::backdrop { background: rgba(25,39,27,.58); backdrop-filter: blur(3px); }
+    .product-detail { position: relative; display: grid; grid-template-columns: 1fr 1fr; }
+    .product-detail-close { position: absolute; z-index: 2; top: 12px; right: 12px; }
+    .product-detail-image { min-height: 460px; background: #edf0e8; }
+    .product-detail-image img { width: 100%; height: 100%; object-fit: cover; }
+    .product-detail-content { padding: 38px 34px 30px; }
+    .product-detail-tag { display: inline-flex; padding: 5px 8px; border-radius: 4px; background: #edf2e8; color: var(--green); font-size: 9px; font-weight: 700; }
+    .product-detail-content h2 { margin: 12px 0 7px; }
+    .product-detail-origin { color: var(--muted); font-size: 10px; }
+    .product-detail-description { margin: 14px 0; color: #667168; font-size: 11px; line-height: 1.65; }
+    .product-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 17px 0; }
+    .product-fact { padding: 11px; border-radius: 7px; background: #f7f8f4; }
+    .product-fact span { display: block; color: var(--muted); font-size: 8px; }
+    .product-fact strong { display: block; margin-top: 5px; font-size: 10px; }
+    .seller-comments { margin-top: 17px; }
+    .seller-comments h3 { margin: 0 0 8px; font-size: 11px; }
+    .comment { padding: 9px 10px; border-left: 2px solid #b7c8af; background: #fafbf8; color: #667168; font-size: 9px; line-height: 1.45; }
+    .comment + .comment { margin-top: 7px; }
+    .comment strong { color: var(--ink); }
+    .product-detail-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; }
+    .product-detail-price { color: var(--green-dark); font-size: 19px; font-weight: 800; }
+    .product-detail-add { min-height: 42px; padding: 0 16px; border: 0; border-radius: 6px; background: var(--green); color: #fff; cursor: pointer; font-size: 10px; font-weight: 700; }
+
+    .seller-dialog { width: min(980px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 0; overflow: hidden; border: 0; border-radius: 14px; background: #fff; box-shadow: 0 24px 80px rgba(0,0,0,.22); }
+    .seller-dialog::backdrop { background: rgba(25,39,27,.58); backdrop-filter: blur(3px); }
+    .seller-panel { min-height: 620px; }
+    .seller-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--line); }
+    .seller-header h2 { font-size: 22px; }
+    .seller-header p { margin: 5px 0 0; color: var(--muted); font-size: 10px; }
+    .seller-layout { display: grid; grid-template-columns: 190px 1fr; min-height: 535px; }
+    .seller-nav { display: flex; flex-direction: column; gap: 5px; padding: 16px 12px; border-right: 1px solid var(--line); background: #fafbf8; }
+    .seller-tab { min-height: 42px; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: #667168; cursor: pointer; text-align: left; font-size: 10px; font-weight: 700; }
+    .seller-tab.active { background: #edf2e8; color: var(--green-dark); }
+    .seller-content { max-height: 535px; overflow: auto; padding: 24px; }
+    .seller-view { display: none; }
+    .seller-view.active { display: block; }
+    .seller-view h3 { margin: 0 0 5px; font-size: 17px; }
+    .seller-view-intro { margin: 0 0 18px; color: var(--muted); font-size: 10px; }
+    .seller-settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .seller-field { display: grid; gap: 7px; }
+    .seller-field.full { grid-column: 1 / -1; }
+    .seller-field label { font-size: 9px; font-weight: 700; }
+    .seller-field input, .seller-field select, .seller-field textarea { width: 100%; min-height: 42px; padding: 9px 11px; border: 1px solid #dfe4da; border-radius: 6px; outline: 0; background: #fff; font-size: 10px; }
+    .seller-field textarea { min-height: 78px; resize: vertical; }
+    .seller-field input:focus, .seller-field select:focus, .seller-field textarea:focus { border-color: #91a98c; box-shadow: 0 0 0 3px rgba(47,99,59,.08); }
+    .seller-save { min-height: 42px; margin-top: 16px; padding: 0 16px; border: 0; border-radius: 6px; background: var(--green); color: #fff; cursor: pointer; font-size: 10px; font-weight: 700; }
+    .seller-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .seller-product { display: grid; grid-template-columns: 62px 1fr; gap: 9px; align-items: center; padding: 9px; border: 1px solid var(--line); border-radius: 8px; }
+    .seller-product img { width: 62px; height: 62px; border-radius: 6px; object-fit: cover; }
+    .seller-product strong { display: block; font-size: 10px; }
+    .seller-product span { display: block; margin-top: 4px; color: var(--muted); font-size: 8px; }
+
+    .customer-dialog { width: min(980px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 0; overflow: hidden; border: 0; border-radius: 14px; background: #fff; box-shadow: 0 24px 80px rgba(0,0,0,.22); }
+    .customer-dialog::backdrop { background: rgba(25,39,27,.58); backdrop-filter: blur(3px); }
+    .customer-panel { min-height: 620px; }
+    .customer-layout { display: grid; grid-template-columns: 190px 1fr; min-height: 535px; }
+    .customer-nav { display: flex; flex-direction: column; gap: 5px; padding: 16px 12px; border-right: 1px solid var(--line); background: #fafbf8; }
+    .customer-tab { min-height: 42px; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: #667168; cursor: pointer; text-align: left; font-size: 10px; font-weight: 700; }
+    .customer-tab.active { background: #edf2e8; color: var(--green-dark); }
+    .customer-content { max-height: 535px; overflow: auto; padding: 24px; }
+    .customer-view { display: none; }
+    .customer-view.active { display: block; }
+    .customer-view h3 { margin: 0 0 5px; font-size: 17px; }
+    .customer-view-intro { margin: 0 0 18px; color: var(--muted); font-size: 10px; }
+    .purchase-list { display: grid; gap: 12px; }
+    .purchase-card { display: grid; grid-template-columns: 78px minmax(0, 1fr) auto; align-items: center; gap: 13px; padding: 12px; border: 1px solid var(--line); border-radius: 9px; }
+    .purchase-card img { width: 78px; height: 78px; border-radius: 7px; object-fit: cover; }
+    .purchase-card h4 { margin: 0 0 5px; font-size: 12px; }
+    .purchase-card p { margin: 3px 0; color: var(--muted); font-size: 9px; line-height: 1.5; }
+    .purchase-card strong { color: var(--green-dark); }
+    .rebuy-button { min-height: 38px; padding: 0 12px; border: 0; border-radius: 6px; background: var(--green); color: #fff; cursor: pointer; font-size: 9px; font-weight: 700; }
+    .customer-profile { display: grid; grid-template-columns: 180px 1fr; gap: 20px; }
+    .profile-photo { display: grid; justify-items: center; align-content: start; gap: 9px; }
+    .profile-photo-preview { width: 145px; height: 145px; border: 4px solid #edf2e8; border-radius: 50%; object-fit: cover; background: #edf2e8; }
+    .profile-photo label { padding: 8px 10px; border: 1px solid #dfe4da; border-radius: 6px; color: var(--green); cursor: pointer; font-size: 9px; font-weight: 700; }
+    .profile-photo input { display: none; }
+    .customer-continue { min-height: 42px; margin-top: 16px; padding: 0 16px; border: 0; border-radius: 6px; background: var(--green); color: #fff; cursor: pointer; font-size: 10px; font-weight: 700; }
 
     @media (max-width: 900px) {
       .container { width: min(100% - 40px, 720px); }
@@ -289,6 +380,14 @@
       .footer-top { flex-direction: column; gap: 25px; }
       .footer-links { width: 100%; justify-content: space-between; gap: 15px; }
       .footer-bottom { flex-direction: column; gap: 8px; }
+      .customer-layout { grid-template-columns: 1fr; }
+      .customer-nav { flex-direction: row; border-right: 0; border-bottom: 1px solid var(--line); }
+      .customer-tab { flex: 1; text-align: center; }
+      .customer-content { max-height: 590px; }
+      .purchase-card { grid-template-columns: 62px 1fr; }
+      .purchase-card img { width: 62px; height: 62px; }
+      .rebuy-button { grid-column: 2; justify-self: start; }
+      .customer-profile { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
@@ -348,9 +447,8 @@
 
       <section class="benefits" aria-label="Beneficios">
         <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 4c-8 0-13 3.8-13 10.1A5.9 5.9 0 0 0 13 20c6.3 0 7-8 7-16Z"/><path d="M4 21c2-5 5.5-8.5 11-11"/></svg></span><span><strong>Fresco de verdad</strong><span>Cosechado hace muy poco</span></span></div>
-        <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="17.5" cy="18" r="1.5"/></svg></span><span><strong>Directo a tu puerta</strong><span>Entrega rápida y cuidadosa</span></span></div>
-        <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s8-4 8-11V5l-8-3-8 3v5c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg></span><span><strong>Origen responsable</strong><span>Pequeños productores locales</span></span></div>
-        <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span><strong>Precios justos</strong><span>Bueno para todos, siempre</span></span></div>
+        <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="17.5" cy="18" r="1.5"/></svg></span><span><strong>Directo a tu puerta</strong><span>Entrega rápida y cuidadosa</span></span></div>
+        <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span><strong>Precios justos</strong><span>Bueno para todos, siempre</span></span></div>
       </section>
 
       <section class="section" id="categorias" aria-labelledby="categories-title">
@@ -365,6 +463,12 @@
           <button class="category" type="button" data-category="organicos" aria-pressed="false"><span class="category-emoji" aria-hidden="true">🥑</span><span>Orgánicos</span></button>
           <button class="category" type="button" data-category="despensa" aria-pressed="false"><span class="category-emoji" aria-hidden="true">🍯</span><span>Despensa</span></button>
           <button class="category" type="button" data-category="lacteos" aria-pressed="false"><span class="category-emoji" aria-hidden="true">🧀</span><span>Lácteos</span></button>
+          <button class="category" type="button" data-category="tuberculos" aria-pressed="false"><span class="category-emoji" aria-hidden="true">🥔</span><span>Tubérculos</span></button>
+          <button class="category" type="button" data-category="cafe" aria-pressed="false"><span class="category-emoji" aria-hidden="true">☕</span><span>Café</span></button>
+          <button class="category" type="button" data-category="hierbas" aria-pressed="false"><span class="category-emoji" aria-hidden="true">🌿</span><span>Hierbas</span></button>
+          <button class="category" type="button" data-category="panaderia" aria-pressed="false"><span class="category-emoji" aria-hidden="true">🥖</span><span>Panadería</span></button>
+          <button class="category" type="button" data-category="proteinas" aria-pressed="false"><span class="category-emoji" aria-hidden="true">🥚</span><span>Proteínas</span></button>
+          <button class="category" type="button" data-category="embutidos" aria-pressed="false"><span class="category-emoji" aria-hidden="true">🥓</span><span>Embutidos</span></button>
         </div>
       </section>
 
@@ -374,22 +478,20 @@
           <a class="text-link" href="#categorias">Ver categorías <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
         <div class="product-grid" id="product-grid">
-          <article class="product-card" data-category="frutas organicos" data-name="aguacate hass organico" data-price="12000" data-unit="kg">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Aguacates Hass frescos" loading="lazy"><span class="product-tag">Orgánico</span></div>
-            <div class="product-info"><div class="product-origin">Finca El Paraíso · Antioquia</div><h3 class="product-name">Aguacate Hass</h3><p class="product-description">Cremoso, recién cosechado</p><div class="product-bottom"><span class="product-price"><span data-product-price>$12.000 COP</span> <small>/ kg</small></span><button class="add-button" type="button" aria-label="Agregar Aguacate Hass al carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div>
-          </article>
-          <article class="product-card" data-category="frutas" data-name="manzana roja" data-price="9500" data-unit="kg">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Manzanas rojas recién cosechadas" loading="lazy"><span class="product-tag">De temporada</span></div>
-            <div class="product-info"><div class="product-origin">Huerto La Cumbre · Boyacá</div><h3 class="product-name">Manzana roja</h3><p class="product-description">Crujiente y naturalmente dulce</p><div class="product-bottom"><span class="product-price"><span data-product-price>$9.500 COP</span> <small>/ kg</small></span><button class="add-button" type="button" aria-label="Agregar Manzana roja al carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div>
-          </article>
-          <article class="product-card" data-category="verduras organicos" data-name="tomate heirloom organico" data-price="8000" data-unit="kg">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Tomates frescos de cultivo local" loading="lazy"><span class="product-tag">Orgánico</span></div>
-            <div class="product-info"><div class="product-origin">Huerta Viva · Cundinamarca</div><h3 class="product-name">Tomate heirloom</h3><p class="product-description">Sabor intenso, cultivo natural</p><div class="product-bottom"><span class="product-price"><span data-product-price>$8.000 COP</span> <small>/ kg</small></span><button class="add-button" type="button" aria-label="Agregar Tomate heirloom al carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div>
-          </article>
-          <article class="product-card" data-category="despensa" data-name="miel de flores silvestres" data-price="25000" data-unit="500 g">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Miel de flores silvestres en frasco" loading="lazy"><span class="product-tag">Artesanal</span></div>
-            <div class="product-info"><div class="product-origin">Apiario Los Pinos · Santander</div><h3 class="product-name">Miel de flores</h3><p class="product-description">Pura, sin filtrar ni procesar</p><div class="product-bottom"><span class="product-price"><span data-product-price>$25.000 COP</span> <small>/ 500 g</small></span><button class="add-button" type="button" aria-label="Agregar Miel de flores al carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div>
-          </article>
+          <article class="product-card" data-category="frutas organicos" data-name="aguacate hass organico" data-price="12000" data-unit="kg" data-stock="38" data-seller="María Pérez" data-location="La Mesa, Cundinamarca" data-comments="Excelente calidad y llegó muy fresco.|María L.: La textura estaba perfecta para aguacate."><div class="product-image"><img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Aguacates Hass frescos" loading="lazy"><span class="product-tag">Orgánico</span></div><div class="product-info"><div class="product-origin">La Mesa · Cundinamarca</div><h3 class="product-name">Aguacate Hass</h3><p class="product-description">Cremoso, recién cosechado</p><div class="product-bottom"><span class="product-price"><span data-product-price>$12.000 COP</span> <small>/ kg</small></span><button class="add-button" type="button" aria-label="Agregar Aguacate Hass al carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="frutas" data-name="manzana roja" data-price="9500" data-unit="kg" data-stock="24" data-seller="Carlos Gómez" data-location="Sibaté, Cundinamarca" data-comments="Muy dulces y crujientes.|Carlos R.: Buena presentación y servicio rápido."><div class="product-image"><img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Manzanas rojas recién cosechadas" loading="lazy"><span class="product-tag">De temporada</span></div><div class="product-info"><div class="product-origin">Sibaté · Cundinamarca</div><h3 class="product-name">Manzana roja</h3><p class="product-description">Crujiente y naturalmente dulce</p><div class="product-bottom"><span class="product-price"><span data-product-price>$9.500 COP</span> <small>/ kg</small></span><button class="add-button" type="button" aria-label="Agregar Manzana roja al carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="verduras organicos" data-name="tomate heirloom organico" data-price="8000" data-unit="kg" data-stock="52" data-seller="Ana Torres" data-location="Funza, Cundinamarca" data-comments="Tomates sabrosos, sin golpes.|Andrea P.: Repetiré la compra."><div class="product-image"><img src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Tomates frescos de cultivo local" loading="lazy"><span class="product-tag">Orgánico</span></div><div class="product-info"><div class="product-origin">Funza · Cundinamarca</div><h3 class="product-name">Tomate heirloom</h3><p class="product-description">Sabor intenso, cultivo natural</p><div class="product-bottom"><span class="product-price"><span data-product-price>$8.000 COP</span> <small>/ kg</small></span><button class="add-button" type="button" aria-label="Agregar Tomate heirloom al carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="despensa" data-name="miel de flores silvestres" data-price="25000" data-unit="500 g" data-stock="16" data-seller="Apiario Nido Dorado" data-location="Villeta, Cundinamarca" data-comments="Sabor natural y excelente empaque.|Lucía M.: Se nota que es miel artesanal."><div class="product-image"><img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Miel de flores silvestres en frasco" loading="lazy"><span class="product-tag">Artesanal</span></div><div class="product-info"><div class="product-origin">Villeta · Cundinamarca</div><h3 class="product-name">Miel de flores</h3><p class="product-description">Pura, sin filtrar ni procesar</p><div class="product-bottom"><span class="product-price"><span data-product-price>$25.000 COP</span> <small>/ 500 g</small></span><button class="add-button" type="button" aria-label="Agregar Miel de flores al carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="frutas" data-name="mora de castilla" data-price="7000" data-unit="500 g" data-stock="31" data-seller="Finca Los Arrayanes" data-location="Tocaima, Cundinamarca" data-comments="Llegó fresca y jugosa.|Daniela C.: Ideal para jugos."><div class="product-image"><img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Moras frescas" loading="lazy"><span class="product-tag">Fresca</span></div><div class="product-info"><div class="product-origin">Tocaima · Cundinamarca</div><h3 class="product-name">Mora de Castilla</h3><p class="product-description">Ácida y muy aromática</p><div class="product-bottom"><span class="product-price"><span data-product-price>$7.000 COP</span> <small>/ 500 g</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="tuberculos" data-name="papa criolla" data-price="6500" data-unit="kg" data-stock="67" data-seller="Terranova Campesina" data-location="Ubaté, Cundinamarca" data-comments="Muy buena para sancochados.|Santiago G.: Tamaños uniformes y sabrosa."><div class="product-image"><img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Papas criollas frescas" loading="lazy"><span class="product-tag">Campesina</span></div><div class="product-info"><div class="product-origin">Ubaté · Cundinamarca</div><h3 class="product-name">Papa criolla</h3><p class="product-description">Dulce y de temporada</p><div class="product-bottom"><span class="product-price"><span data-product-price>$6.500 COP</span> <small>/ kg</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="lacteos" data-name="cuajada fresca artesanal" data-price="11000" data-unit="400 g" data-stock="19" data-seller="Luz Medina" data-location="Guatavita, Cundinamarca" data-comments="Muy fresca y cremosa.|Camila H.: Perfecta para acompañar desayuno."><div class="product-image"><img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Cuajada artesanal fresca" loading="lazy"><span class="product-tag">Artesanal</span></div><div class="product-info"><div class="product-origin">Guatavita · Cundinamarca</div><h3 class="product-name">Cuajada fresca</h3><p class="product-description">Elaborada todos los días</p><div class="product-bottom"><span class="product-price"><span data-product-price>$11.000 COP</span> <small>/ 400 g</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="lacteos" data-name="leche fresca pasteurizada" data-price="6500" data-unit="litro" data-stock="30" data-seller="Luz Medina" data-location="Guatavita, Cundinamarca" data-comments="Leche fresca y de excelente sabor.|Laura S.: Llegó bien refrigerada."><div class="product-image"><img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Botella de leche fresca" loading="lazy"><span class="product-tag">Fresco</span></div><div class="product-info"><div class="product-origin">Guatavita · Cundinamarca</div><h3 class="product-name">Leche fresca</h3><p class="product-description">Leche pasteurizada del día</p><div class="product-bottom"><span class="product-price"><span data-product-price>$6.500 COP</span> <small>/ litro</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="lacteos" data-name="queso campesino artesanal" data-price="18000" data-unit="500 g" data-stock="21" data-seller="Javier Rojas" data-location="Sesquilé, Cundinamarca" data-comments="Queso suave y muy bien elaborado.|Pedro M.: Excelente para desayuno."><div class="product-image"><img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Queso campesino artesanal" loading="lazy"><span class="product-tag">Artesanal</span></div><div class="product-info"><div class="product-origin">Sesquilé · Cundinamarca</div><h3 class="product-name">Queso campesino</h3><p class="product-description">Madurado artesanalmente</p><div class="product-bottom"><span class="product-price"><span data-product-price>$18.000 COP</span> <small>/ 500 g</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="cafe despensa" data-name="cafe tostado de origen" data-price="32000" data-unit="500 g" data-stock="22" data-seller="Sabores de Sutatausa" data-location="Sutatausa, Cundinamarca" data-comments="Aroma intenso y tostión equilibrada.|Juan S.: Café de excelente origen."><div class="product-image"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Café tostado artesanal" loading="lazy"><span class="product-tag">Origen</span></div><div class="product-info"><div class="product-origin">Sutatausa · Cundinamarca</div><h3 class="product-name">Café tostado</h3><p class="product-description">Tueste medio con notas a cacao</p><div class="product-bottom"><span class="product-price"><span data-product-price>$32.000 COP</span> <small>/ 500 g</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="hierbas verduras" data-name="hierbabuena fresca" data-price="3500" data-unit="manojo" data-stock="44" data-seller="Huertos del Rosal" data-location="El Rosal, Cundinamarca" data-comments="Muy fresca y bien empacada.|Valentina O.: Trae bastante para preparar infusiones."><div class="product-image"><img src="https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Hierbabuena fresca" loading="lazy"><span class="product-tag">Aromática</span></div><div class="product-info"><div class="product-origin">El Rosal · Cundinamarca</div><h3 class="product-name">Hierbabuena</h3><p class="product-description">Manojo recién cortado</p><div class="product-bottom"><span class="product-price"><span data-product-price>$3.500 COP</span> <small>/ manojo</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="panaderia" data-name="pan campesino integral" data-price="8500" data-unit="unidad" data-stock="13" data-seller="Panadería Valle Verde" data-location="La Calera, Cundinamarca" data-comments="Textura deliciosa y saludable.|Andrés N.: Se mantiene fresco varios días."><div class="product-image"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Pan artesanal integral" loading="lazy"><span class="product-tag">Integral</span></div><div class="product-info"><div class="product-origin">La Calera · Cundinamarca</div><h3 class="product-name">Pan campesino integral</h3><p class="product-description">Horneado con masa madre</p><div class="product-bottom"><span class="product-price"><span data-product-price>$8.500 COP</span> <small>/ unidad</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="proteinas" data-name="huevos campesinos" data-price="18000" data-unit="docena" data-stock="35" data-seller="Gallinas del Llano" data-location="Girardot, Cundinamarca" data-comments="Huevos grandes y frescos.|Natalia V.: Llegaron bien protegidos."><div class="product-image"><img src="https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Huevos campesinos frescos" loading="lazy"><span class="product-tag">Frescos</span></div><div class="product-info"><div class="product-origin">Girardot · Cundinamarca</div><h3 class="product-name">Huevos campesinos</h3><p class="product-description">De gallinas criadas al aire libre</p><div class="product-bottom"><span class="product-price"><span data-product-price>$18.000 COP</span> <small>/ docena</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
+          <article class="product-card" data-category="embutidos proteinas" data-name="chorizo artesanal" data-price="22000" data-unit="500 g" data-stock="18" data-seller="Carnes San Mateo" data-location="Fusagasugá, Cundinamarca" data-comments="Muy jugoso y con buen punto de especias.|Miguel A.: Excelente para parrillada."><div class="product-image"><img src="https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Chorizos artesanales" loading="lazy"><span class="product-tag">Artesanal</span></div><div class="product-info"><div class="product-origin">Fusagasugá · Cundinamarca</div><h3 class="product-name">Chorizo artesanal</h3><p class="product-description">Preparado con especias naturales</p><div class="product-bottom"><span class="product-price"><span data-product-price>$22.000 COP</span> <small>/ 500 g</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div></article>
           <p class="empty-state" id="empty-state" hidden>No encontramos productos. Prueba otra búsqueda o categoría.</p>
         </div>
       </section>
@@ -398,15 +500,15 @@
         <div class="story-copy">
           <span class="eyebrow">Personas detrás de cada cosecha</span>
           <h2 id="story-title">Cada compra cultiva un cambio.</h2>
-          <p>Conectamos a quienes producen con quienes disfrutan comer bien. Así apoyamos comunidades, cuidamos el suelo y llevamos alimentos con historia a tu hogar.</p>
-          <a class="text-link" href="#newsletter">Conoce nuestra comunidad <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <p>Agromarket Connect nació en la UNAD en el año 2026 con el objetivo de conectar directamente a campesinos de la región con posibles compradores, eliminando intermediarios y fortaleciendo una economía local más justa y sostenible.</p>
+          <a class="text-link" href="#newsletter">Conoce nuestra comunidad <svg viewBox="0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
         <div class="story-image"><img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0a9c8b?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Productora local cuidando sus cultivos" loading="lazy"></div>
       </section>
 
       <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
         <div class="newsletter-copy">
-          <span class="newsletter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <span class="newsletter-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
           <div><h2 id="newsletter-title">Un poquito del campo en tu correo.</h2><p>Novedades de temporada, recetas y favoritos de nuestros productores.</p></div>
         </div>
         <form class="newsletter-form" id="newsletter-form">
@@ -431,7 +533,7 @@
           <div class="footer-column"><strong>Conecta</strong><a href="#newsletter">Instagram</a><a href="#newsletter">Facebook</a><a href="#newsletter">Sé productor</a></div>
         </div>
       </div>
-      <div class="footer-bottom"><span>© 2025 Agromarket Connect. Hecho con cariño por nuestra tierra.</span><span>Fresco, local y con propósito.</span></div>
+      <div class="footer-bottom"><span>© 2026 Agromarket Connect. Proyecto nacido en la UNAD.</span><span>Fresco, local y con propósito.</span></div>
     </div>
   </footer>
 
@@ -449,42 +551,113 @@
         <div class="cart-total-row"><span class="cart-total-label">Total de productos</span><strong class="cart-total-value" id="cart-total"></strong></div>
         <p class="cart-shipping-note">Total en pesos colombianos (COP). El envío no está incluido.</p>
       </div>
-      <button class="cart-continue" id="cart-continue" type="button">Seguir comprando</button>
+      <div class="cart-actions">
+        <button class="cart-continue" id="cart-continue" type="button">Seguir comprando</button>
+        <button class="cart-pay" id="cart-pay" type="button" disabled>Pagar</button>
+      </div>
     </div>
   </dialog>
 
   <dialog class="login-dialog" id="login-dialog" aria-labelledby="login-title" aria-describedby="login-description">
     <div class="login-panel">
-      <button class="login-close" id="login-close" type="button" aria-label="Cerrar ventana de inicio de sesión">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg>
-      </button>
-      <div class="login-brand">
-        <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4c-8 0-13 3.8-13 10.1A5.9 5.9 0 0 0 13 20c6.3 0 7-8 7-16Z"/><path d="M4 21c2-5 5.5-8.5 11-11"/></svg></span>
-        <span class="brand-name">Agromarket <span>Connect</span></span>
-      </div>
-      <span class="login-kicker">Qué gusto tenerte de vuelta</span>
+      <button class="login-close" id="login-close" type="button" aria-label="Cerrar ventana de inicio de sesión"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg></button>
+      <div class="login-brand"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4c-8 0-13 3.8-13 10.1A5.9 5.9 0 0 0 13 20c6.3 0 7-8 7-16Z"/><path d="M4 21c2-5 5.5-8.5 11-11"/></svg></span><span class="brand-name">Agromarket <span>Connect</span></span></div>
+      <span class="login-kicker">Elige cómo quieres ingresar</span>
       <h2 id="login-title">Inicia sesión</h2>
-      <p class="login-description" id="login-description">Accede a tu cuenta para seguir disfrutando de lo mejor del campo.</p>
+      <p class="login-description" id="login-description">Selecciona tu perfil para continuar.</p>
+      <div class="login-role-grid" id="login-role-grid">
+        <button class="login-role" type="button" data-role="cliente"><span class="login-role-icon" aria-hidden="true">🛒</span><strong>Soy cliente</strong><small>Explora y compra productos locales.</small></button>
+        <button class="login-role" type="button" data-role="vendedor"><span class="login-role-icon" aria-hidden="true">🌱</span><strong>Soy vendedor</strong><small>Gestiona tus productos y tu cuenta.</small></button>
+      </div>
       <form class="login-form" id="login-form">
-        <div class="login-field">
-          <label for="login-email">Correo electrónico</label>
-          <input id="login-email" name="email" type="email" autocomplete="email" placeholder="tu@correo.com" required>
-        </div>
-        <div class="login-field">
-          <label for="login-password">Contraseña</label>
-          <div class="password-wrap">
-            <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Tu contraseña" required>
-            <button class="password-toggle" id="password-toggle" type="button" aria-pressed="false">Mostrar</button>
-          </div>
-        </div>
-        <div class="login-options">
-          <label class="remember-label"><input type="checkbox" name="remember"> Recordarme</label>
-          <a class="forgot-link" href="mailto:hola@agromarketconnect.com?subject=Recuperar%20contrase%C3%B1a">¿Olvidaste tu contraseña?</a>
-        </div>
+        <div class="login-field"><label for="login-email">Correo electrónico</label><input id="login-email" name="email" type="email" autocomplete="email" placeholder="tu@correo.com" required></div>
+        <div class="login-field"><label for="login-password">Contraseña</label><div class="password-wrap"><input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Tu contraseña" required><button class="password-toggle" id="password-toggle" type="button" aria-pressed="false">Mostrar</button></div></div>
+        <div class="login-options"><label class="remember-label"><input type="checkbox" name="remember"> Recordarme</label><a class="forgot-link" href="mailto:hola@agromarketconnect.com?subject=Recuperar%20contrase%C3%B1a">¿Olvidaste tu contraseña?</a></div>
         <button class="login-submit" type="submit">Entrar a mi cuenta</button>
         <p class="login-status" id="login-status" role="status" aria-live="polite"></p>
       </form>
-      <p class="login-demo-note">La autenticación aún no está conectada. Este formulario es solo una vista previa.</p>
+      <p class="login-demo-note">Prototipo demostrativo. No se almacenan credenciales ni se realiza una autenticación real.</p>
+    </div>
+  </dialog>
+
+  <dialog class="product-dialog" id="product-dialog" aria-labelledby="product-detail-name">
+    <div class="product-detail">
+      <button class="login-close product-detail-close" id="product-detail-close" type="button" aria-label="Cerrar información del producto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg></button>
+      <div class="product-detail-image"><img id="product-detail-img" src="" alt=""></div>
+      <div class="product-detail-content">
+        <span class="product-detail-tag" id="product-detail-tag">Fresco</span>
+        <h2 id="product-detail-name"></h2>
+        <div class="product-detail-origin" id="product-detail-origin"></div>
+        <p class="product-detail-description" id="product-detail-description"></p>
+        <div class="product-facts">
+          <div class="product-fact"><span>Disponibilidad</span><strong id="product-detail-stock"></strong></div>
+          <div class="product-fact"><span>Vendedor</span><strong id="product-detail-seller"></strong></div>
+          <div class="product-fact"><span>Ubicación</span><strong id="product-detail-location"></strong></div>
+          <div class="product-fact"><span>Presentación</span><strong id="product-detail-unit"></strong></div>
+        </div>
+        <div class="seller-comments"><h3>Comentarios sobre el vendedor</h3><div id="product-detail-comments"></div></div>
+        <div class="product-detail-bottom"><strong class="product-detail-price" id="product-detail-price"></strong><button class="product-detail-add" id="product-detail-add" type="button">Agregar al carrito</button></div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="customer-dialog" id="customer-dialog" aria-labelledby="customer-title">
+    <div class="customer-panel">
+      <div class="seller-header">
+        <div><h2 id="customer-title">Mi cuenta</h2><p id="customer-welcome">Bienvenido, comprador</p></div>
+        <button class="login-close" id="customer-close" type="button" aria-label="Cerrar cuenta del cliente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="customer-layout">
+        <nav class="customer-nav" aria-label="Opciones del cliente">
+          <button class="customer-tab active" type="button" data-customer-view="purchases">Mis compras</button>
+          <button class="customer-tab" type="button" data-customer-view="settings">Configuración</button>
+        </nav>
+        <div class="customer-content">
+          <section class="customer-view active" id="customer-purchases">
+            <h3>Historial de compras</h3>
+            <p class="customer-view-intro">Pedidos realizados directamente a productores locales.</p>
+            <div class="purchase-list" id="purchase-list"></div>
+            <button class="customer-continue" id="customer-continue" type="button">Seguir comprando</button>
+          </section>
+          <section class="customer-view" id="customer-settings">
+            <h3>Configuración de perfil</h3>
+            <p class="customer-view-intro">Actualiza tus datos y dirección de entrega.</p>
+            <form id="customer-settings-form" class="customer-profile">
+              <div class="profile-photo">
+                <img class="profile-photo-preview" id="profile-photo-preview" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" alt="Foto de perfil del cliente">
+                <label for="profile-photo-input">Cambiar foto</label>
+                <input id="profile-photo-input" type="file" accept="image/*">
+              </div>
+              <div class="seller-settings-grid">
+                <div class="seller-field"><label for="customer-name-input">Nombre</label><input id="customer-name-input" value="Laura Martínez" required></div>
+                <div class="seller-field"><label for="customer-email-input">Correo electrónico</label><input id="customer-email-input" type="email" value="laura@correo.com" required></div>
+                <div class="seller-field"><label for="customer-password-input">Nueva contraseña</label><input id="customer-password-input" type="password" placeholder="Dejar vacía para no cambiar"></div>
+                <div class="seller-field"><label for="customer-phone-input">Teléfono</label><input id="customer-phone-input" type="tel" value="+57 310 245 6789"></div>
+                <div class="seller-field"><label for="customer-location-input">Ciudad o municipio</label><input id="customer-location-input" value="Sopó, Cundinamarca" required></div>
+                <div class="seller-field"><label for="customer-address-input">Dirección de residencia</label><input id="customer-address-input" value="Carrera 8 # 14-25" required></div>
+                <div class="seller-field full"><button class="seller-save" type="submit">Guardar cambios</button></div>
+              </div>
+            </form>
+            <button class="customer-continue" id="customer-settings-continue" type="button">Seguir comprando</button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="seller-dialog" id="seller-dialog" aria-labelledby="seller-title">
+    <div class="seller-panel">
+      <div class="seller-header"><div><h2 id="seller-title">Panel del vendedor</h2><p id="seller-welcome">Bienvenido a tu espacio de gestión</p></div><button class="login-close" id="seller-close" type="button" aria-label="Cerrar panel del vendedor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg></button></div>
+      <div class="seller-layout">
+        <nav class="seller-nav" aria-label="Opciones del vendedor"><button class="seller-tab active" type="button" data-seller-view="published">Mis productos</button><button class="seller-tab" type="button" data-seller-view="publish">Publicar producto</button><button class="seller-tab" type="button" data-seller-view="settings">Ajustes de cuenta</button></nav>
+        <div class="seller-content">
+          <section class="seller-view active" id="seller-published"><h3>Productos publicados</h3><p class="seller-view-intro">Productos visibles en el catálogo demostrativo.</p><div class="seller-products" id="seller-products"></div></section>
+          <section class="seller-view" id="seller-publish"><h3>Publicar nuevo producto</h3><p class="seller-view-intro">Completa la información para agregar una vista previa al catálogo.</p><form id="publish-form" class="seller-settings-grid"><div class="seller-field"><label for="publish-name">Nombre del producto</label><input id="publish-name" required placeholder="Ej. Café de origen"></div><div class="seller-field"><label for="publish-category">Categoría</label><select id="publish-category"><option value="frutas">Frutas</option><option value="verduras">Verduras</option><option value="organicos">Orgánicos</option><option value="despensa">Despensa</option><option value="lacteos">Lácteos</option><option value="tuberculos">Tubérculos</option><option value="cafe">Café</option></select></div><div class="seller-field"><label for="publish-price">Precio (COP)</label><input id="publish-price" type="number" min="100" required placeholder="15000"></div><div class="seller-field"><label for="publish-stock">Cantidad disponible</label><input id="publish-stock" type="number" min="1" required placeholder="20"></div><div class="seller-field"><label for="publish-location">Municipio en Cundinamarca</label><input id="publish-location" required placeholder="Ej. Fusagasugá"></div><div class="seller-field"><label for="publish-unit">Unidad de venta</label><input id="publish-unit" required placeholder="Ej. kg, libra, unidad"></div><div class="seller-field"><label for="publish-description">Descripción</label><textarea id="publish-description" required placeholder="Describe brevemente el producto..."></textarea></div><div class="seller-field full"><button class="seller-save" type="submit">Guardar producto</button></div></form></section>
+          <section class="seller-view" id="seller-settings"><h3>Ajustes de cuenta</h3><p class="seller-view-intro">Actualiza los datos que se mostrarán en el prototipo.</p><form id="seller-settings-form" class="seller-settings-grid"><div class="seller-field"><label for="seller-name-input">Nombre de usuario</label><input id="seller-name-input" value="María Pérez" required></div><div class="seller-field"><label for="seller-email-input">Correo electrónico</label><input id="seller-email-input" type="email" value="maria@agromarket.co" required></div><div class="seller-field"><label for="seller-password-input">Nueva contraseña</label><input id="seller-password-input" type="password" placeholder="Dejar vacía para no cambiar"></div><div class="seller-field"><label for="seller-location-input">Ubicación principal</label><input id="seller-location-input" value="La Mesa, Cundinamarca" required></div><div class="seller-field full"><button class="seller-save" type="submit">Guardar cambios</button></div></form></section>
+        </div>
+      </div>
     </div>
   </dialog>
 
@@ -505,6 +678,13 @@
     const loginDialog = document.querySelector("#login-dialog");
     const loginEmail = document.querySelector("#login-email");
     const loginPassword = document.querySelector("#login-password");
+    const loginRoleButtons = [...document.querySelectorAll(".login-role")];
+    const productDialog = document.querySelector("#product-dialog");
+    const sellerDialog = document.querySelector("#seller-dialog");
+    const customerDialog = document.querySelector("#customer-dialog");
+    let selectedLoginRole = "";
+    let detailCard = null;
+    let sellerName = "María Pérez";
     let activeCategory = "all";
     const cart = new Map();
     let toastTimer;
@@ -529,6 +709,7 @@
       const entries = [...cart.entries()];
       cartEmpty.hidden = entries.length > 0;
       cartSummary.hidden = entries.length === 0;
+      document.querySelector("#cart-pay").disabled = entries.length === 0;
       let total = 0;
 
       entries.forEach(([id, item]) => {
@@ -649,10 +830,52 @@
 
     searchInput.addEventListener("input", filterProducts);
 
+    cartButton.addEventListener("click", () => {
+      renderCart();
+      cartDialog.showModal();
+    });
+
+    document.querySelector("#cart-close").addEventListener("click", () => cartDialog.close());
+    cartDialog.addEventListener("click", (event) => {
+      if (event.target === cartDialog) cartDialog.close();
+    });
+    document.querySelector("#cart-continue").addEventListener("click", () => {
+      cartDialog.close();
+      document.querySelector("#productos").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    document.querySelector("#cart-pay").addEventListener("click", () => {
+      if (cart.size === 0) return;
+      cartDialog.close();
+      showToast("Tu pedido está listo. El pago se puede completar en la siguiente etapa.");
+    });
+    cartList.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-action]");
+      if (!button) return;
+      const item = cart.get(button.dataset.productId);
+      if (!item) return;
+      if (button.dataset.action === "increase") item.quantity += 1;
+      if (button.dataset.action === "decrease") item.quantity -= 1;
+      if (button.dataset.action === "remove" || item.quantity <= 0) cart.delete(button.dataset.productId);
+      renderCart();
+    });
+
     document.querySelector("#login-open").addEventListener("click", () => {
       document.querySelector("#login-status").textContent = "";
+      selectedLoginRole = "";
+      loginRoleButtons.forEach((button) => button.classList.remove("active"));
       loginDialog.showModal();
-      loginEmail.focus();
+      loginRoleButtons[0].focus();
+    });
+
+    loginRoleButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        selectedLoginRole = button.dataset.role;
+        loginRoleButtons.forEach((item) => item.classList.toggle("active", item === button));
+        document.querySelector("#login-description").textContent = selectedLoginRole === "vendedor"
+          ? "Ingresa para administrar tus productos y ajustes de cuenta."
+          : "Ingresa para comprar productos frescos de Cundinamarca.";
+        loginEmail.focus();
+      });
     });
 
     document.querySelector("#login-close").addEventListener("click", () => loginDialog.close());
@@ -671,48 +894,234 @@
 
     document.querySelector("#login-form").addEventListener("submit", (event) => {
       event.preventDefault();
-      document.querySelector("#login-status").textContent = "No se pudo iniciar sesión: la autenticación aún no está conectada a un servidor.";
+      if (!selectedLoginRole) {
+        document.querySelector("#login-status").textContent = "Selecciona si eres cliente o vendedor.";
+        return;
+      }
+      if (selectedLoginRole === "vendedor") {
+        loginDialog.close();
+        sellerName = document.querySelector("#seller-name-input").value;
+        document.querySelector("#seller-welcome").textContent = `Bienvenido, ${sellerName}`;
+        renderSellerProducts();
+        sellerDialog.showModal();
+        showToast("Has ingresado al panel demostrativo de vendedor");
+      } else {
+        loginDialog.close();
+        const customerName = document.querySelector("#customer-name-input").value;
+        document.querySelector("#customer-welcome").textContent = `Bienvenido, ${customerName}`;
+        renderCustomerPurchases();
+        customerDialog.showModal();
+        showToast("Bienvenido a tu historial de compras");
+      }
     });
 
-    document.querySelectorAll(".add-button").forEach((button) => {
+    function openProductDetail(card) {
+      detailCard = card;
+      const image = card.querySelector(".product-image img");
+      document.querySelector("#product-detail-img").src = image.src;
+      document.querySelector("#product-detail-img").alt = image.alt;
+      document.querySelector("#product-detail-tag").textContent = card.querySelector(".product-tag")?.textContent || "Fresco";
+      document.querySelector("#product-detail-name").textContent = card.querySelector(".product-name").textContent;
+      document.querySelector("#product-detail-origin").textContent = card.querySelector(".product-origin").textContent;
+      document.querySelector("#product-detail-description").textContent = card.querySelector(".product-description").textContent;
+      document.querySelector("#product-detail-stock").textContent = `${card.dataset.stock || "20"} disponibles`;
+      document.querySelector("#product-detail-seller").textContent = card.dataset.seller || sellerName;
+      document.querySelector("#product-detail-location").textContent = card.dataset.location || "Sopó, Cundinamarca";
+      document.querySelector("#product-detail-unit").textContent = card.dataset.unit || "unidad";
+      document.querySelector("#product-detail-price").textContent = `${formatCOP.format(Number(card.dataset.price))} COP / ${card.dataset.unit}`;
+      const comments = (card.dataset.comments || "Producto recomendado por clientes locales.|Juan P.: Buena atención y entrega puntual.").split("|");
+      const commentsContainer = document.querySelector("#product-detail-comments");
+      commentsContainer.replaceChildren();
+      comments.forEach((comment) => {
+        const element = document.createElement("div");
+        element.className = "comment";
+        element.textContent = comment;
+        commentsContainer.append(element);
+      });
+      productDialog.showModal();
+    }
+
+    function bindCard(card) {
+      card.style.cursor = "pointer";
+      card.addEventListener("click", (event) => {
+        if (event.target.closest(".add-button")) return;
+        openProductDetail(card);
+      });
+      const addButton = card.querySelector(".add-button");
+      if (addButton) {
+        addButton.addEventListener("click", (event) => {
+          event.stopPropagation();
+          addToCart(card);
+        });
+      }
+    }
+
+    productCards.forEach(bindCard);
+
+    document.querySelector("#product-detail-close").addEventListener("click", () => productDialog.close());
+    productDialog.addEventListener("click", (event) => {
+      if (event.target === productDialog) productDialog.close();
+    });
+    document.querySelector("#product-detail-add").addEventListener("click", () => {
+      if (detailCard) {
+        addToCart(detailCard);
+        productDialog.close();
+      }
+    });
+
+    document.querySelectorAll(".seller-tab").forEach((button) => {
       button.addEventListener("click", () => {
-        addToCart(button.closest(".product-card"));
+        document.querySelectorAll(".seller-tab").forEach((tab) => tab.classList.toggle("active", tab === button));
+        document.querySelectorAll(".seller-view").forEach((view) => view.classList.toggle("active", view.id === `seller-${button.dataset.sellerView}`));
       });
     });
 
-    cartButton.addEventListener("click", () => {
-      renderCart();
-      cartDialog.showModal();
+    document.querySelectorAll(".customer-tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".customer-tab").forEach((tab) => tab.classList.toggle("active", tab === button));
+        document.querySelectorAll(".customer-view").forEach((view) => view.classList.toggle("active", view.id === `customer-${button.dataset.customerView}`));
+      });
     });
 
-    document.querySelector("#cart-close").addEventListener("click", () => cartDialog.close());
-    document.querySelector("#cart-continue").addEventListener("click", () => cartDialog.close());
-    cartDialog.addEventListener("click", (event) => {
-      if (event.target === cartDialog) cartDialog.close();
+    function renderCustomerPurchases() {
+      const container = document.querySelector("#purchase-list");
+      const purchaseCards = productCards.slice(0, 3);
+      const purchaseData = [
+        { date: "12 noviembre de 2026", status: "Entregado", quantity: "2 kg" },
+        { date: "4 noviembre de 2026", status: "Entregado", quantity: "1 litro" },
+        { date: "28 octubre de 2026", status: "Entregado", quantity: "500 g" }
+      ];
+      container.replaceChildren();
+
+      purchaseCards.forEach((card, index) => {
+        const row = document.createElement("article");
+        row.className = "purchase-card";
+        const image = document.createElement("img");
+        image.src = card.querySelector(".product-image img").src;
+        image.alt = card.querySelector(".product-name").textContent;
+        const details = document.createElement("div");
+        details.innerHTML = "<h4></h4><p></p><p></p><p></p>";
+        details.querySelector("h4").textContent = card.querySelector(".product-name").textContent;
+        const paragraphs = details.querySelectorAll("p");
+        paragraphs[0].innerHTML = `Comprado a: <strong></strong>`;
+        paragraphs[0].querySelector("strong").textContent = card.dataset.seller;
+        paragraphs[1].textContent = `${card.dataset.location} · ${purchaseData[index].quantity}`;
+        paragraphs[2].textContent = `${purchaseData[index].date} · ${purchaseData[index].status} · ${formatCOP.format(Number(card.dataset.price))} COP`;
+
+        const rebuy = document.createElement("button");
+        rebuy.type = "button";
+        rebuy.className = "rebuy-button";
+        rebuy.textContent = "Comprar nuevamente";
+        rebuy.addEventListener("click", () => {
+          addToCart(card);
+          customerDialog.close();
+          showToast(`${card.querySelector(".product-name").textContent} volvió al carrito`);
+        });
+        row.append(image, details, rebuy);
+        container.append(row);
+      });
+    }
+
+    function closeCustomerPanelAndContinue() {
+      customerDialog.close();
+      document.querySelector("#productos").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.querySelector("#customer-close").addEventListener("click", () => customerDialog.close());
+    customerDialog.addEventListener("click", (event) => {
+      if (event.target === customerDialog) customerDialog.close();
+    });
+    document.querySelector("#customer-continue").addEventListener("click", closeCustomerPanelAndContinue);
+    document.querySelector("#customer-settings-continue").addEventListener("click", closeCustomerPanelAndContinue);
+
+    document.querySelector("#profile-photo-input").addEventListener("change", (event) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      document.querySelector("#profile-photo-preview").src = URL.createObjectURL(file);
     });
 
-    cartList.addEventListener("click", (event) => {
-      const button = event.target.closest("button[data-action]");
-      if (!button) return;
+    document.querySelector("#customer-settings-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = document.querySelector("#customer-name-input").value;
+      const password = document.querySelector("#customer-password-input");
+      document.querySelector("#customer-welcome").textContent = `Bienvenido, ${name}`;
+      if (password.value) password.value = "";
+      showToast("Datos del comprador actualizados en el prototipo");
+    });
 
-      const item = cart.get(button.dataset.productId);
-      if (!item) return;
+    document.querySelector("#seller-close").addEventListener("click", () => sellerDialog.close());
+    sellerDialog.addEventListener("click", (event) => {
+      if (event.target === sellerDialog) sellerDialog.close();
+    });
 
-      if (button.dataset.action === "increase") item.quantity += 1;
-      if (button.dataset.action === "decrease") {
-        item.quantity -= 1;
-        if (item.quantity === 0) cart.delete(button.dataset.productId);
+    function renderSellerProducts() {
+      const container = document.querySelector("#seller-products");
+      const published = [...productCards].filter((card) => (card.dataset.seller || "Juan Campesino") === sellerName);
+      container.replaceChildren();
+      if (published.length === 0) {
+        const empty = document.createElement("p");
+        empty.className = "cart-empty";
+        empty.textContent = "Aún no tienes productos publicados.";
+        container.append(empty);
+        return;
       }
-      if (button.dataset.action === "remove") cart.delete(button.dataset.productId);
-      renderCart();
+      published.forEach((card) => {
+        const item = document.createElement("article");
+        item.className = "seller-product";
+        const image = document.createElement("img");
+        image.src = card.querySelector(".product-image img").src;
+        image.alt = card.querySelector(".product-name").textContent;
+        const info = document.createElement("div");
+        info.innerHTML = `<strong></strong><span></span><span></span>`;
+        info.querySelector("strong").textContent = card.querySelector(".product-name").textContent;
+        const spans = info.querySelectorAll("span");
+        spans[0].textContent = `${card.dataset.stock} disponibles · ${formatCOP.format(Number(card.dataset.price))} COP`;
+        spans[1].textContent = card.dataset.location;
+        item.append(image, info);
+        container.append(item);
+      });
+    }
+
+    document.querySelector("#seller-settings-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      sellerName = document.querySelector("#seller-name-input").value;
+      document.querySelector("#seller-welcome").textContent = `Bienvenido, ${sellerName}`;
+      const password = document.querySelector("#seller-password-input");
+      if (password.value) password.value = "";
+      renderSellerProducts();
+      showToast("Cambios de cuenta guardados en el prototipo");
     });
 
-    document.querySelector("#newsletter-form").addEventListener("submit", (event) => {
+    document.querySelector("#publish-form").addEventListener("submit", (event) => {
       event.preventDefault();
       const form = event.currentTarget;
-      form.querySelector("input").hidden = true;
-      form.querySelector("button").hidden = true;
-      document.querySelector("#newsletter-message").style.display = "block";
+      const name = document.querySelector("#publish-name").value;
+      const category = document.querySelector("#publish-category").value;
+      const price = document.querySelector("#publish-price").value;
+      const stock = document.querySelector("#publish-stock").value;
+      const location = document.querySelector("#publish-location").value;
+      const unit = document.querySelector("#publish-unit").value;
+      const description = document.querySelector("#publish-description").value;
+      const card = document.createElement("article");
+      card.className = "product-card";
+      card.dataset.category = category;
+      card.dataset.name = name.toLocaleLowerCase("es");
+      card.dataset.price = price;
+      card.dataset.unit = unit;
+      card.dataset.stock = stock;
+      card.dataset.seller = sellerName;
+      card.dataset.location = `${location}, Cundinamarca`;
+      card.dataset.comments = "Producto nuevo publicado por este vendedor.|Cliente prototipo: Espero recibirlo pronto.";
+      card.innerHTML = `<div class="product-image"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=700&q=80" alt="${name}" loading="lazy"><span class="product-tag">Nuevo</span></div><div class="product-info"><div class="product-origin">${location} · Cundinamarca</div><h3 class="product-name"></h3><p class="product-description"></p><div class="product-bottom"><span class="product-price"><span data-product-price></span> <small>/ ${unit}</small></span><button class="add-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>Agregar</button></div></div>`;
+      card.querySelector(".product-name").textContent = name;
+      card.querySelector(".product-description").textContent = description;
+      card.querySelector("[data-product-price]").textContent = `${formatCOP.format(Number(price))} COP`;
+      document.querySelector("#product-grid").insertBefore(card, document.querySelector("#empty-state"));
+      productCards.push(card);
+      bindCard(card);
+      renderSellerProducts();
+      form.reset();
+      showToast("Producto publicado y guardado en el prototipo");
     });
   </script>
 </body>
