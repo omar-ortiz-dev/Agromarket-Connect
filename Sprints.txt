@@ -1,0 +1,982 @@
+================================================================================
+       HISTORIAS DE USUARIO Y PLANIFICACIÓN DE SPRINTS
+       PROYECTO: AgroMarket-Connect
+       Plataforma Transaccional Directa para la Comercialización
+       Agropecuaria Regional
+================================================================================
+Fecha: 22 de noviembre de 2026
+Metodología: CDIO (Concebir, Diseñar, Implementar, Operar)
+Framework ágil: Scrum (Sprints de 2 semanas)
+Duración total: 7 meses (~14 sprints)
+================================================================================
+
+
+========================================
+ÉPICAS DEL PROYECTO
+========================================
+
+EP-01: Gestión de Usuarios y Autenticación
+EP-02: Catálogo de Productos Agrícolas
+EP-03: Gestión de Inventarios
+EP-04: Gestión de Pedidos
+EP-05: Geolocalización de Productores
+EP-06: Diseño e Infraestructura de la Plataforma
+EP-07: Pruebas y Validación
+
+
+========================================
+HISTORIAS DE USUARIO
+========================================
+
+------------------------------------------------------------------------
+ÉPICA EP-01: GESTIÓN DE USUARIOS Y AUTENTICACIÓN
+------------------------------------------------------------------------
+
+HU-01: Registro de Productor Agrícola
+  Como pequeño productor agrícola,
+  Quiero registrarme en la plataforma proporcionando mis datos básicos
+    (nombre, municipio, teléfono, correo, tipo de productos),
+  Para poder publicar mi oferta agrícola y ser contactado por
+    compradores locales.
+
+  Criterios de aceptación:
+  - El formulario solicita: nombre completo, municipio, teléfono,
+    correo electrónico, contraseña y tipo de productor.
+  - El sistema valida que los campos obligatorios estén completos.
+  - El sistema valida formato de correo y longitud mínima de contraseña.
+  - Se presenta la política de tratamiento de datos personales y el
+    usuario debe aceptarla antes de completar el registro.
+  - Al registrarse exitosamente, el usuario recibe confirmación y
+    puede iniciar sesión.
+  - El perfil queda marcado como "Productor".
+  Prioridad: Alta
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-02: Registro de Comprador Local
+  Como comprador local (consumidor, tendero, restaurante, plaza
+    de mercado),
+  Quiero registrarme en la plataforma indicando mi tipo de comprador
+    y datos de contacto,
+  Para poder consultar el catálogo de productos agrícolas y realizar
+    pedidos directamente a los productores.
+
+  Criterios de aceptación:
+  - El formulario solicita: nombre/razón social, tipo de comprador
+    (consumidor final, tendero, restaurante, plaza de mercado, otro),
+    municipio, teléfono, correo electrónico y contraseña.
+  - El sistema diferencia el perfil de comprador del de productor.
+  - Se presenta y requiere aceptación de la política de tratamiento
+    de datos personales (Ley 1581 de 2012).
+  - Al registrarse exitosamente, el comprador puede iniciar sesión
+    y acceder al catálogo.
+  Prioridad: Alta
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-03: Inicio de Sesión
+  Como usuario registrado (productor o comprador),
+  Quiero iniciar sesión con mi correo y contraseña,
+  Para acceder a las funcionalidades correspondientes a mi perfil.
+
+  Criterios de aceptación:
+  - El sistema autentica al usuario con correo y contraseña.
+  - Si las credenciales son incorrectas, se muestra un mensaje
+    de error claro sin revelar información sensible.
+  - Tras el inicio de sesión, el sistema redirige al panel
+    correspondiente según el rol (productor o comprador).
+  - Las contraseñas se almacenan cifradas en la base de datos.
+  Prioridad: Alta
+  Puntos de historia: 3
+
+------------------------------------------------------------------------
+
+HU-04: Edición de Perfil de Usuario
+  Como usuario registrado,
+  Quiero editar mi información de perfil (teléfono, dirección,
+    datos de contacto),
+  Para mantener actualizada mi información en la plataforma.
+
+  Criterios de aceptación:
+  - El usuario puede modificar sus datos excepto el correo
+    electrónico (campo identificador).
+  - Los cambios se validan antes de guardarse.
+  - El sistema confirma que los datos fueron actualizados
+    exitosamente.
+  Prioridad: Media
+  Puntos de historia: 3
+
+------------------------------------------------------------------------
+
+HU-05: Recuperación de Contraseña
+  Como usuario registrado,
+  Quiero poder recuperar mi contraseña mediante mi correo
+    electrónico,
+  Para no perder acceso a mi cuenta en caso de olvido.
+
+  Criterios de aceptación:
+  - El usuario ingresa su correo y recibe un enlace o código
+    de recuperación.
+  - El enlace/código tiene una vigencia limitada.
+  - El usuario puede establecer una nueva contraseña.
+  Prioridad: Media
+  Puntos de historia: 3
+
+------------------------------------------------------------------------
+
+HU-06: Cierre de Sesión
+  Como usuario autenticado,
+  Quiero cerrar mi sesión de forma segura,
+  Para proteger mi cuenta cuando deje de usar la plataforma.
+
+  Criterios de aceptación:
+  - Al cerrar sesión, el token de autenticación se invalida.
+  - El usuario es redirigido a la página de inicio.
+  Prioridad: Alta
+  Puntos de historia: 1
+
+
+------------------------------------------------------------------------
+ÉPICA EP-02: CATÁLOGO DE PRODUCTOS AGRÍCOLAS
+------------------------------------------------------------------------
+
+HU-07: Publicación de Producto Agrícola
+  Como productor agrícola,
+  Quiero registrar un producto en el catálogo indicando nombre,
+    descripción, categoría, unidad de medida, precio y fotografía,
+  Para que los compradores puedan conocer mi oferta disponible.
+
+  Criterios de aceptación:
+  - El formulario solicita: nombre del producto, descripción,
+    categoría (verdura, fruta, tubérculo, grano, lácteo, otro),
+    unidad de medida (kg, libra, unidad, canastilla), precio
+    por unidad y al menos una fotografía.
+  - El sistema valida que todos los campos obligatorios estén
+    completos y que el precio sea un valor numérico positivo.
+  - La fotografía se almacena y se muestra en miniatura en
+    el catálogo.
+  - El producto queda visible en el catálogo para los compradores.
+  Prioridad: Alta
+  Puntos de historia: 8
+
+------------------------------------------------------------------------
+
+HU-08: Edición de Producto Publicado
+  Como productor agrícola,
+  Quiero editar la información de un producto que ya publiqué
+    (precio, descripción, fotografía),
+  Para mantener mi oferta actualizada.
+
+  Criterios de aceptación:
+  - Solo el productor propietario puede editar su producto.
+  - Los cambios se reflejan inmediatamente en el catálogo.
+  - Se validan los datos actualizados antes de guardarlos.
+  Prioridad: Alta
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-09: Desactivación de Producto
+  Como productor agrícola,
+  Quiero desactivar un producto cuando ya no esté disponible,
+  Para que los compradores no vean productos que no puedo ofrecer.
+
+  Criterios de aceptación:
+  - El producto desactivado deja de aparecer en el catálogo
+    público pero no se elimina de la base de datos.
+  - El productor puede reactivar el producto posteriormente.
+  - Los pedidos pendientes asociados no se ven afectados
+    por la desactivación.
+  Prioridad: Alta
+  Puntos de historia: 3
+
+------------------------------------------------------------------------
+
+HU-10: Consulta del Catálogo de Productos
+  Como comprador local,
+  Quiero consultar el catálogo de productos agrícolas disponibles
+    con filtros por categoría, municipio y tipo de producto,
+  Para encontrar los productos que necesito de manera rápida y
+    organizada.
+
+  Criterios de aceptación:
+  - El catálogo muestra productos activos con imagen, nombre,
+    precio, unidad de medida, municipio del productor y
+    disponibilidad.
+  - Se pueden aplicar filtros por: categoría de producto,
+    municipio y rango de precio.
+  - Se puede buscar por nombre del producto.
+  - El catálogo se visualiza correctamente en dispositivos
+    móviles y de escritorio (diseño responsivo).
+  Prioridad: Alta
+  Puntos de historia: 8
+
+------------------------------------------------------------------------
+
+HU-11: Vista Detallada de Producto
+  Como comprador local,
+  Quiero ver el detalle completo de un producto (descripción,
+    fotos, datos del productor, ubicación),
+  Para tomar una decisión de compra informada.
+
+  Criterios de aceptación:
+  - La vista muestra toda la información del producto, incluyendo
+    fotografías, nombre del productor y municipio.
+  - Se muestra un botón o enlace para realizar un pedido.
+  - Se muestra la cantidad disponible en inventario.
+  Prioridad: Alta
+  Puntos de historia: 5
+
+
+------------------------------------------------------------------------
+ÉPICA EP-03: GESTIÓN DE INVENTARIOS
+------------------------------------------------------------------------
+
+HU-12: Registro de Inventario Inicial
+  Como productor agrícola,
+  Quiero registrar la cantidad disponible de cada producto
+    al momento de publicarlo,
+  Para que los compradores conozcan mi disponibilidad real.
+
+  Criterios de aceptación:
+  - Al crear un producto, se solicita la cantidad disponible
+    junto con la unidad de medida.
+  - El sistema no permite cantidades negativas.
+  - La cantidad se muestra en el catálogo junto al producto.
+  Prioridad: Alta
+  Puntos de historia: 3
+
+------------------------------------------------------------------------
+
+HU-13: Actualización de Inventario
+  Como productor agrícola,
+  Quiero actualizar manualmente la cantidad disponible de mis
+    productos,
+  Para reflejar cambios por nuevas cosechas o ventas externas.
+
+  Criterios de aceptación:
+  - El productor puede aumentar o disminuir la cantidad
+    disponible desde su panel.
+  - El sistema registra la fecha y hora de cada actualización.
+  - Si el inventario llega a cero, el producto se marca como
+    "Agotado" en el catálogo pero permanece visible.
+  Prioridad: Alta
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-14: Descuento Automático de Inventario por Pedido
+  Como productor agrícola,
+  Quiero que el inventario se descuente automáticamente cuando
+    un comprador confirma un pedido,
+  Para evitar vender más de lo que tengo disponible.
+
+  Criterios de aceptación:
+  - Al crear un pedido, el sistema verifica que la cantidad
+    solicitada no exceda el inventario disponible.
+  - Si el inventario es insuficiente, se muestra un mensaje
+    informativo al comprador.
+  - El inventario se descuenta solo cuando el pedido es
+    confirmado.
+  - Si el pedido es cancelado, el inventario se restaura.
+  Prioridad: Alta
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-15: Consulta de Inventario por Productor
+  Como productor agrícola,
+  Quiero ver un resumen de mis productos con sus cantidades
+    disponibles,
+  Para tener control sobre mi oferta actual.
+
+  Criterios de aceptación:
+  - El panel del productor muestra una tabla con todos sus
+    productos, cantidad disponible, unidad y estado.
+  - Se puede ordenar por nombre, cantidad o estado.
+  - Los productos con inventario en cero se resaltan
+    visualmente.
+  Prioridad: Media
+  Puntos de historia: 3
+
+
+------------------------------------------------------------------------
+ÉPICA EP-04: GESTIÓN DE PEDIDOS
+------------------------------------------------------------------------
+
+HU-16: Creación de Pedido
+  Como comprador local,
+  Quiero seleccionar productos del catálogo y crear un pedido
+    indicando cantidades,
+  Para solicitar productos directamente al productor.
+
+  Criterios de aceptación:
+  - El comprador puede agregar uno o más productos de un mismo
+    productor a un pedido.
+  - Se solicita la cantidad deseada por cada producto.
+  - El sistema calcula el total estimado del pedido.
+  - El sistema valida que las cantidades no excedan el
+    inventario disponible.
+  - El pedido se crea con estado "Pendiente".
+  - Se notifica al productor sobre el nuevo pedido.
+  Prioridad: Alta
+  Puntos de historia: 8
+
+------------------------------------------------------------------------
+
+HU-17: Consulta de Pedidos (Comprador)
+  Como comprador local,
+  Quiero ver el listado de mis pedidos con su estado actual
+    (Pendiente, Confirmado, Despachado, Entregado, Cancelado),
+  Para hacer seguimiento de mis solicitudes.
+
+  Criterios de aceptación:
+  - El panel del comprador lista todos sus pedidos ordenados
+    por fecha (más reciente primero).
+  - Cada pedido muestra: número, fecha, productor, productos
+    solicitados, cantidades, total estimado y estado.
+  - Se puede filtrar por estado del pedido.
+  Prioridad: Alta
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-18: Gestión de Pedidos (Productor)
+  Como productor agrícola,
+  Quiero ver los pedidos recibidos y poder confirmarlos,
+    rechazarlos o marcarlos como despachados,
+  Para gestionar las solicitudes de los compradores.
+
+  Criterios de aceptación:
+  - El panel del productor lista los pedidos recibidos con
+    datos del comprador, productos y cantidades.
+  - El productor puede cambiar el estado del pedido:
+    Pendiente → Confirmado, Confirmado → Despachado,
+    Despachado → Entregado, o Pendiente → Cancelado.
+  - Al confirmar, el inventario se descuenta.
+  - Al cancelar, el inventario se restaura.
+  - Se notifica al comprador sobre los cambios de estado.
+  Prioridad: Alta
+  Puntos de historia: 8
+
+------------------------------------------------------------------------
+
+HU-19: Cancelación de Pedido
+  Como comprador local,
+  Quiero cancelar un pedido que esté en estado "Pendiente",
+  Para desistir de una solicitud antes de que sea confirmada.
+
+  Criterios de aceptación:
+  - Solo se pueden cancelar pedidos en estado "Pendiente".
+  - Al cancelar, el inventario reservado se libera.
+  - El estado del pedido cambia a "Cancelado".
+  - Se notifica al productor sobre la cancelación.
+  Prioridad: Media
+  Puntos de historia: 3
+
+------------------------------------------------------------------------
+
+HU-20: Historial de Pedidos
+  Como usuario (productor o comprador),
+  Quiero consultar un historial de pedidos anteriores,
+  Para tener registro de mis transacciones pasadas.
+
+  Criterios de aceptación:
+  - Se muestran los pedidos finalizados (Entregados y
+    Cancelados) con toda su información.
+  - Se puede filtrar por rango de fechas.
+  Prioridad: Baja
+  Puntos de historia: 3
+
+
+------------------------------------------------------------------------
+ÉPICA EP-05: GEOLOCALIZACIÓN DE PRODUCTORES
+------------------------------------------------------------------------
+
+HU-21: Registro de Ubicación del Productor
+  Como productor agrícola,
+  Quiero registrar mi ubicación geográfica (municipio y
+    coordenadas opcionales),
+  Para que los compradores puedan identificar de dónde provienen
+    mis productos.
+
+  Criterios de aceptación:
+  - El productor puede seleccionar su municipio de una lista
+    de municipios de Sabana Centro.
+  - Opcionalmente, puede marcar su ubicación en un mapa o
+    ingresar coordenadas.
+  - Se solicita autorización explícita para el uso de los
+    datos de ubicación (cumplimiento Ley 1581 de 2012).
+  - La ubicación solo se muestra si el productor lo autoriza.
+  Prioridad: Alta
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-22: Mapa de Productores
+  Como comprador local,
+  Quiero ver un mapa con la ubicación de los productores
+    registrados en Sabana Centro,
+  Para identificar proveedores cercanos a mi ubicación.
+
+  Criterios de aceptación:
+  - El mapa muestra marcadores con la ubicación de los
+    productores que autorizaron compartir su posición.
+  - Al hacer clic en un marcador, se muestra el nombre del
+    productor, municipio y un enlace a sus productos.
+  - El mapa se centra por defecto en la región de Sabana
+    Centro, Cundinamarca.
+  - El mapa es funcional en dispositivos móviles.
+  Prioridad: Alta
+  Puntos de historia: 8
+
+------------------------------------------------------------------------
+
+HU-23: Filtro de Productos por Ubicación
+  Como comprador local,
+  Quiero filtrar los productos del catálogo por municipio
+    o proximidad geográfica,
+  Para encontrar productos de productores cercanos.
+
+  Criterios de aceptación:
+  - El catálogo permite seleccionar uno o varios municipios
+    de Sabana Centro como filtro.
+  - Los resultados muestran solo productos de productores
+    ubicados en los municipios seleccionados.
+  - Se puede combinar con otros filtros (categoría, precio).
+  Prioridad: Media
+  Puntos de historia: 5
+
+
+------------------------------------------------------------------------
+ÉPICA EP-06: DISEÑO E INFRAESTRUCTURA
+------------------------------------------------------------------------
+
+HU-24: Interfaz Responsiva y Accesible
+  Como usuario de la plataforma (productor o comprador con
+    baja experiencia tecnológica),
+  Quiero que la interfaz sea sencilla, con navegación clara
+    y textos legibles,
+  Para poder usar la plataforma sin dificultad desde mi
+    teléfono celular.
+
+  Criterios de aceptación:
+  - La interfaz se adapta correctamente a pantallas de celular,
+    tablet y computador.
+  - Los botones y enlaces tienen tamaño adecuado para
+    interacción táctil.
+  - Los formularios usan lenguaje sencillo y mensajes de
+    error comprensibles.
+  - La navegación principal es accesible en máximo 2 niveles
+    de profundidad.
+  - Los colores tienen contraste suficiente para legibilidad.
+  Prioridad: Alta
+  Puntos de historia: 8
+
+------------------------------------------------------------------------
+
+HU-25: Página de Inicio Pública
+  Como visitante de la plataforma,
+  Quiero ver una página de inicio que explique qué es
+    AgroMarket-Connect y cómo funciona,
+  Para decidir si deseo registrarme como productor o comprador.
+
+  Criterios de aceptación:
+  - La página muestra una descripción breve de la plataforma.
+  - Incluye botones visibles para "Registrarse como Productor"
+    y "Registrarse como Comprador".
+  - Muestra productos destacados o estadísticas básicas
+    (cantidad de productores, productos disponibles).
+  Prioridad: Media
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-26: Notificaciones Básicas en Plataforma
+  Como usuario de la plataforma,
+  Quiero recibir notificaciones dentro del sistema cuando
+    haya cambios relevantes en mis pedidos,
+  Para estar informado sin necesidad de revisar constantemente.
+
+  Criterios de aceptación:
+  - El productor recibe notificación cuando recibe un nuevo
+    pedido o cuando un pedido es cancelado por el comprador.
+  - El comprador recibe notificación cuando su pedido cambia
+    de estado.
+  - Las notificaciones se muestran dentro de la plataforma
+    con un indicador visual (badge).
+  Prioridad: Media
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-27: Panel de Administración del Productor
+  Como productor agrícola,
+  Quiero tener un panel principal donde vea un resumen de
+    mis productos activos, inventario y pedidos recientes,
+  Para gestionar mi actividad comercial de forma centralizada.
+
+  Criterios de aceptación:
+  - El panel muestra: cantidad de productos activos, productos
+    con inventario bajo, pedidos pendientes y pedidos recientes.
+  - Desde el panel se puede acceder directamente a gestionar
+    productos, inventario y pedidos.
+  Prioridad: Media
+  Puntos de historia: 5
+
+------------------------------------------------------------------------
+
+HU-28: Panel del Comprador
+  Como comprador local,
+  Quiero tener un panel principal donde vea mis pedidos
+    recientes y accesos rápidos al catálogo y mapa,
+  Para navegar la plataforma de forma eficiente.
+
+  Criterios de aceptación:
+  - El panel muestra: pedidos recientes con estado, acceso
+    directo al catálogo y acceso al mapa de productores.
+  - La interfaz es limpia y de baja carga cognitiva.
+  Prioridad: Media
+  Puntos de historia: 3
+
+
+========================================
+PLANIFICACIÓN DE SPRINTS
+========================================
+
+Duración de cada Sprint: 2 semanas
+Total: 14 Sprints distribuidos en 7 meses
+Ceremonia Scrum: Planning, Daily, Review, Retrospectiva
+
+------------------------------------------------------------------------
+SPRINT 1 (Mes 1, Semanas 1-2)
+Fase CDIO: CONCEBIR
+Objetivo: Levantar requerimientos y diagnosticar necesidades
+------------------------------------------------------------------------
+
+Tareas:
+  - Definir y delimitar el territorio de estudio (municipios
+    de Sabana Centro).
+  - Preparar y validar instrumentos de recolección de datos
+    (cuestionarios, guía de entrevista, ficha de observación).
+  - Aplicar encuestas a productores agrícolas (Instrumento 1).
+  - Aplicar encuestas a compradores locales (Instrumento 2).
+  - Realizar entrevistas semiestructuradas (Instrumento 3).
+
+Entregable:
+  - Instrumentos de recolección validados.
+  - Datos recolectados de productores y compradores.
+
+Puntos de historia: N/A (fase de investigación)
+
+------------------------------------------------------------------------
+SPRINT 2 (Mes 1, Semanas 3-4)
+Fase CDIO: CONCEBIR
+Objetivo: Analizar información y definir requerimientos
+------------------------------------------------------------------------
+
+Tareas:
+  - Tabular y analizar datos cuantitativos (frecuencias,
+    porcentajes).
+  - Analizar información cualitativa (temas recurrentes en
+    entrevistas).
+  - Elaborar diagnóstico de la situación actual.
+  - Construir la matriz de requerimientos funcionales y no
+    funcionales.
+  - Definir perfiles de usuario, reglas de negocio y criterios
+    de aceptación.
+  - Priorizar el Product Backlog con historias de usuario.
+
+Entregable:
+  - Documento de diagnóstico.
+  - Especificación de requerimientos (SRS).
+  - Product Backlog priorizado.
+
+Puntos de historia: N/A (fase de investigación)
+
+------------------------------------------------------------------------
+SPRINT 3 (Mes 2, Semanas 1-2)
+Fase CDIO: DISEÑAR
+Objetivo: Diseñar la arquitectura y modelo de datos
+------------------------------------------------------------------------
+
+Tareas:
+  - Diseñar la arquitectura del sistema (Frontend, Backend,
+    Base de Datos, API REST).
+  - Modelar el diagrama Entidad-Relación (E-R) de la base
+    de datos relacional.
+  - Definir las entidades: Usuarios, Productores, Compradores,
+    Productos, Categorías, Inventarios, Pedidos,
+    DetallesPedido, Ubicaciones.
+  - Especificar endpoints de la API REST.
+  - Seleccionar tecnologías de desarrollo (framework frontend,
+    backend, motor de base de datos, servicio de mapas).
+  - Configurar repositorio Git y estructura del proyecto.
+
+Entregable:
+  - Documento de arquitectura de software.
+  - Diagrama Entidad-Relación.
+  - Especificación de API REST.
+  - Repositorio configurado en GitHub.
+
+Historias relacionadas: EP-06
+Puntos de historia: 13
+
+------------------------------------------------------------------------
+SPRINT 4 (Mes 2, Semanas 3-4)
+Fase CDIO: DISEÑAR
+Objetivo: Diseñar interfaces UI/UX y prototipos navegables
+------------------------------------------------------------------------
+
+Tareas:
+  - Diseñar wireframes de baja fidelidad de las pantallas
+    principales.
+  - Diseñar prototipos de interfaz responsiva para:
+    * Página de inicio pública (HU-25)
+    * Registro de productor y comprador (HU-01, HU-02)
+    * Inicio de sesión (HU-03)
+    * Panel del productor (HU-27)
+    * Panel del comprador (HU-28)
+    * Catálogo de productos (HU-10)
+    * Vista de producto (HU-11)
+    * Mapa de productores (HU-22)
+  - Validar prototipos con principios de baja carga cognitiva.
+  - Diseñar flujos de navegación completos.
+
+Entregable:
+  - Prototipos de interfaz UI/UX (Figma u otra herramienta).
+  - Documento de flujos de navegación.
+  - Guía de estilos (colores, tipografía, componentes).
+
+Historias relacionadas: HU-24, HU-25
+Puntos de historia: 13
+
+------------------------------------------------------------------------
+SPRINT 5 (Mes 3, Semanas 1-2)
+Fase CDIO: IMPLEMENTAR
+Objetivo: Desarrollar Backend - Autenticación y Usuarios
+------------------------------------------------------------------------
+
+Tareas:
+  - Implementar la base de datos relacional (crear tablas,
+    relaciones, restricciones).
+  - Desarrollar API de registro de usuarios (productor y
+    comprador).
+  - Implementar autenticación con JWT o sistema de sesiones.
+  - Desarrollar endpoints de inicio/cierre de sesión.
+  - Implementar cifrado de contraseñas.
+  - Desarrollar endpoint de edición de perfil.
+  - Escribir pruebas unitarias del módulo de autenticación.
+
+Entregable:
+  - Base de datos creada y funcional.
+  - API de autenticación y gestión de usuarios funcional.
+  - Pruebas unitarias del módulo.
+
+Historias implementadas: HU-01, HU-02, HU-03, HU-04, HU-06
+Puntos de historia: 17
+
+------------------------------------------------------------------------
+SPRINT 6 (Mes 3, Semanas 3-4)
+Fase CDIO: IMPLEMENTAR
+Objetivo: Desarrollar Backend - Productos e Inventarios
+------------------------------------------------------------------------
+
+Tareas:
+  - Desarrollar API CRUD de productos agrícolas (crear, leer,
+    actualizar, desactivar).
+  - Implementar carga y almacenamiento de imágenes de productos.
+  - Desarrollar API de gestión de inventarios (registro,
+    actualización, consulta).
+  - Implementar lógica de validación de cantidades.
+  - Implementar endpoint de catálogo con filtros (categoría,
+    municipio, precio, búsqueda por nombre).
+  - Escribir pruebas unitarias de productos e inventarios.
+
+Entregable:
+  - API de productos e inventarios funcional.
+  - Endpoints de catálogo con filtros.
+  - Pruebas unitarias del módulo.
+
+Historias implementadas: HU-07, HU-08, HU-09, HU-12, HU-13, HU-15
+Puntos de historia: 27
+
+------------------------------------------------------------------------
+SPRINT 7 (Mes 4, Semanas 1-2)
+Fase CDIO: IMPLEMENTAR
+Objetivo: Desarrollar Backend - Pedidos y Geolocalización
+------------------------------------------------------------------------
+
+Tareas:
+  - Desarrollar API de gestión de pedidos (crear, consultar,
+    actualizar estado).
+  - Implementar lógica de descuento automático de inventario
+    al confirmar pedido (HU-14).
+  - Implementar restauración de inventario al cancelar
+    pedido (HU-19).
+  - Implementar flujo de estados del pedido (Pendiente →
+    Confirmado → Despachado → Entregado / Cancelado).
+  - Desarrollar API de geolocalización (registro y consulta
+    de ubicaciones de productores).
+  - Implementar endpoint de mapa con datos de productores.
+  - Escribir pruebas unitarias de pedidos y geolocalización.
+
+Entregable:
+  - API de pedidos funcional con manejo de estados.
+  - API de geolocalización funcional.
+  - Pruebas unitarias del módulo.
+
+Historias implementadas: HU-14, HU-16, HU-17, HU-18, HU-19, HU-21
+Puntos de historia: 32
+
+------------------------------------------------------------------------
+SPRINT 8 (Mes 4, Semanas 3-4)
+Fase CDIO: IMPLEMENTAR
+Objetivo: Desarrollar Frontend - Autenticación y Estructura
+------------------------------------------------------------------------
+
+Tareas:
+  - Configurar proyecto frontend con framework seleccionado.
+  - Implementar layout principal responsivo (header, navegación,
+    footer).
+  - Desarrollar página de inicio pública (HU-25).
+  - Implementar formularios de registro de productor y
+    comprador (HU-01, HU-02).
+  - Implementar pantalla de inicio de sesión (HU-03).
+  - Implementar pantalla de edición de perfil (HU-04).
+  - Integrar autenticación frontend-backend.
+
+Entregable:
+  - Estructura frontend responsiva.
+  - Módulo de autenticación frontend funcional e integrado.
+
+Historias implementadas (frontend): HU-01, HU-02, HU-03,
+  HU-04, HU-06, HU-24, HU-25
+Puntos de historia: 25
+
+------------------------------------------------------------------------
+SPRINT 9 (Mes 5, Semanas 1-2)
+Fase CDIO: IMPLEMENTAR
+Objetivo: Desarrollar Frontend - Catálogo e Inventarios
+------------------------------------------------------------------------
+
+Tareas:
+  - Implementar vista del catálogo de productos con filtros
+    y búsqueda (HU-10).
+  - Implementar vista detallada de producto (HU-11).
+  - Implementar panel del productor con resumen (HU-27).
+  - Implementar formulario de publicación de producto con
+    carga de fotos (HU-07).
+  - Implementar pantalla de edición y desactivación de
+    producto (HU-08, HU-09).
+  - Implementar vista de inventario del productor (HU-15).
+  - Implementar actualización de inventario (HU-13).
+
+Entregable:
+  - Módulo de catálogo frontend funcional.
+  - Módulo de inventarios frontend funcional.
+  - Panel del productor operativo.
+
+Historias implementadas (frontend): HU-07, HU-08, HU-09,
+  HU-10, HU-11, HU-13, HU-15, HU-27
+Puntos de historia: 37
+
+------------------------------------------------------------------------
+SPRINT 10 (Mes 5, Semanas 3-4)
+Fase CDIO: IMPLEMENTAR
+Objetivo: Desarrollar Frontend - Pedidos, Mapa y Notificaciones
+------------------------------------------------------------------------
+
+Tareas:
+  - Implementar flujo de creación de pedido (HU-16).
+  - Implementar panel de pedidos del comprador con estados
+    y filtros (HU-17).
+  - Implementar panel de gestión de pedidos del productor
+    con cambios de estado (HU-18).
+  - Implementar cancelación de pedido (HU-19).
+  - Implementar historial de pedidos (HU-20).
+  - Integrar mapa de productores con librería de mapas
+    (Leaflet/Google Maps) (HU-22).
+  - Implementar filtro de productos por ubicación (HU-23).
+  - Implementar panel del comprador (HU-28).
+  - Implementar sistema básico de notificaciones (HU-26).
+
+Entregable:
+  - Módulo de pedidos frontend funcional.
+  - Mapa de productores funcional.
+  - Sistema de notificaciones básico.
+  - Panel del comprador operativo.
+
+Historias implementadas (frontend): HU-16, HU-17, HU-18,
+  HU-19, HU-20, HU-22, HU-23, HU-26, HU-28
+Puntos de historia: 40
+
+------------------------------------------------------------------------
+SPRINT 11 (Mes 6, Semanas 1-2)
+Fase CDIO: OPERAR
+Objetivo: Integración completa y despliegue en staging
+------------------------------------------------------------------------
+
+Tareas:
+  - Realizar integración completa frontend-backend.
+  - Corregir bugs de integración identificados.
+  - Configurar entorno de pruebas (staging) en la nube
+    (AWS/Azure).
+  - Desplegar la plataforma en el entorno de staging.
+  - Verificar funcionamiento de todos los módulos en el
+    entorno desplegado.
+  - Implementar recuperación de contraseña (HU-05).
+  - Realizar pruebas de rendimiento básicas.
+
+Entregable:
+  - Plataforma desplegada en entorno de staging.
+  - Log de bugs corregidos.
+
+Historias implementadas: HU-05
+Puntos de historia: 16
+
+------------------------------------------------------------------------
+SPRINT 12 (Mes 6, Semanas 3-4)
+Fase CDIO: OPERAR
+Objetivo: Pruebas funcionales, de integración y de seguridad
+------------------------------------------------------------------------
+
+Tareas:
+  - Ejecutar pruebas funcionales completas según matriz de
+    pruebas (registro, catálogo, inventarios, pedidos, mapa).
+  - Ejecutar pruebas de integración (comunicación frontend →
+    backend → base de datos).
+  - Ejecutar pruebas básicas de seguridad:
+    * Validación de entradas (prevención de inyección SQL, XSS).
+    * Control de acceso por roles.
+    * Manejo seguro de credenciales.
+  - Ejecutar simulación de escenarios de comercialización:
+    * Productor publica producto → Comprador lo encuentra →
+      Crea pedido → Productor confirma → Despacha → Entrega.
+    * Comprador cancela pedido → Inventario se restaura.
+  - Documentar resultados, errores y correcciones.
+
+Entregable:
+  - Matriz de pruebas funcionales ejecutada.
+  - Informe de pruebas de integración.
+  - Informe de pruebas de seguridad.
+  - Log de errores detectados y corregidos.
+
+Puntos de historia: N/A (fase de pruebas)
+
+------------------------------------------------------------------------
+SPRINT 13 (Mes 7, Semanas 1-2)
+Fase CDIO: OPERAR
+Objetivo: Pruebas de usabilidad y ajustes finales
+------------------------------------------------------------------------
+
+Tareas:
+  - Realizar pruebas de usabilidad con participantes
+    representativos (productores y compradores).
+  - Aplicar tareas representativas a los usuarios de prueba.
+  - Recoger observaciones y retroalimentación.
+  - Implementar ajustes de usabilidad identificados.
+  - Corregir bugs finales.
+  - Verificar cumplimiento de requerimientos no funcionales
+    (responsividad, tiempos de carga, compatibilidad
+    de navegadores).
+
+Entregable:
+  - Informe de pruebas de usabilidad.
+  - Versión final del prototipo con ajustes aplicados.
+
+Puntos de historia: N/A (fase de evaluación)
+
+------------------------------------------------------------------------
+SPRINT 14 (Mes 7, Semanas 3-4)
+Fase CDIO: OPERAR
+Objetivo: Documentación final y sustentación
+------------------------------------------------------------------------
+
+Tareas:
+  - Consolidar el informe final de proyecto de grado.
+  - Elaborar manual técnico del sistema (arquitectura,
+    base de datos, API, despliegue).
+  - Elaborar manual de usuario (guía de uso para productores
+    y compradores).
+  - Documentar conclusiones, recomendaciones y oportunidades
+    de mejora.
+  - Preparar material de sustentación (presentación).
+  - Realizar sustentación del proyecto de grado.
+
+Entregable:
+  - Informe final del proyecto de grado.
+  - Manual técnico.
+  - Manual de usuario.
+  - Presentación de sustentación.
+
+Puntos de historia: N/A (documentación)
+
+
+========================================
+RESUMEN DE VELOCIDAD POR SPRINT
+========================================
+
+Sprint  | Fase      | Puntos | Historias principales
+--------|-----------|--------|-------------------------------
+  1     | Concebir  |  N/A   | Levantamiento de información
+  2     | Concebir  |  N/A   | Análisis y requerimientos
+  3     | Diseñar   |   13   | Arquitectura y BD (EP-06)
+  4     | Diseñar   |   13   | Prototipos UI/UX (HU-24,25)
+  5     | Implement.|   17   | Backend usuarios (HU-01~06)
+  6     | Implement.|   27   | Backend productos (HU-07~15)
+  7     | Implement.|   32   | Backend pedidos/geo (HU-14~21)
+  8     | Implement.|   25   | Frontend autenticación
+  9     | Implement.|   37   | Frontend catálogo/inventario
+  10    | Implement.|   40   | Frontend pedidos/mapa
+  11    | Operar    |   16   | Integración y staging
+  12    | Operar    |  N/A   | Pruebas funcionales
+  13    | Operar    |  N/A   | Pruebas de usabilidad
+  14    | Operar    |  N/A   | Documentación y sustentación
+
+
+========================================
+DEFINICIÓN DE HECHO (DEFINITION OF DONE)
+========================================
+
+Una historia de usuario se considera TERMINADA cuando:
+  1. El código cumple con todos los criterios de aceptación.
+  2. Las pruebas unitarias están escritas y pasan exitosamente.
+  3. El código está integrado en la rama principal del
+     repositorio (GitHub).
+  4. La funcionalidad ha sido verificada en el entorno de
+     desarrollo.
+  5. La interfaz es responsiva y se visualiza correctamente
+     en dispositivos móviles y de escritorio.
+  6. No hay errores críticos pendientes relacionados con
+     la historia.
+
+
+========================================
+PRODUCT BACKLOG PRIORIZADO (RESUMEN)
+========================================
+
+Prioridad ALTA (Must Have):
+  HU-01, HU-02, HU-03, HU-06 (Autenticación)
+  HU-07, HU-08, HU-09, HU-10, HU-11 (Catálogo)
+  HU-12, HU-13, HU-14 (Inventarios)
+  HU-16, HU-17, HU-18 (Pedidos)
+  HU-21, HU-22 (Geolocalización)
+  HU-24 (Interfaz responsiva)
+
+Prioridad MEDIA (Should Have):
+  HU-04, HU-05 (Perfil y recuperación)
+  HU-15 (Consulta inventario)
+  HU-19 (Cancelación pedido)
+  HU-23 (Filtro por ubicación)
+  HU-25, HU-26, HU-27, HU-28 (Paneles y notificaciones)
+
+Prioridad BAJA (Could Have):
+  HU-20 (Historial de pedidos)
+
+
+================================================================================
+FIN DEL DOCUMENTO
+================================================================================
